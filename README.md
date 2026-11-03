@@ -136,9 +136,18 @@ erDiagram
 | Orodje | Zahteva | Preverjanje |
 |---|---|---|
 | Git | katera koli novejša verzija | `git --version` |
-| JDK | **21** (pri višji verziji nastavi `JAVA_HOME` na JDK 21) | `java -version` |
+| JDK | **21** ali novejši (starejši, npr. 16 ali 17, ne deluje) | `java -version` |
 | Node.js + npm | 18 ali novejši | `node --version` |
 | MySQL | 8.0 ali novejši na `localhost:3306` (ali Docker) | `mysql --version` |
+
+#### Nastavitev JDK 21 (če `java -version` kaže drugo verzijo)
+
+Maven uporabi JDK iz spremenljivke `JAVA_HOME`. Če je tam starejša verzija, gradnja javi `release version 21 not supported`. Nastavi JDK 21 v terminalu, v katerem zaganjaš zaledje (velja samo za to okno):
+
+- Windows (PowerShell): `$env:JAVA_HOME="C:\pot\do\jdk-21"`
+- Linux/macOS: `export JAVA_HOME=/pot/do/jdk-21`
+
+Preveri z `.\mvnw.cmd -v` (Windows) ali `./mvnw -v`: v izpisu mora pisati `Java version: 21...`.
 
 ### 4.2 Prenos kode
 
